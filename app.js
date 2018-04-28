@@ -32,8 +32,13 @@ app.use(ejsLayouts);
 // }));
 
 app.get('/', (req, res) => {
-  res.render('home');
-  // res.send('testing');
+  let sql = 'SELECT * FROM countries WHERE id = 5';
+  let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+    console.log(results);
+    console.log('Country Fetched...');
+    res.render('home', {result: results});
+  });
 });
 
 app.get('/createpoststable', (req, res) => {
