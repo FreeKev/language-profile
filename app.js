@@ -32,12 +32,49 @@ app.use(ejsLayouts);
 // }));
 
 app.get('/', (req, res) => {
-  let sql = 'SELECT * FROM countries WHERE id = 5';
+  // let sql = 'SELECT * FROM countries WHERE id = 5';
+  // SELECT * FROM countries, faqs, languages, projects, stories
+  let sql = `Select
+                  l.name as languageName,
+                  l.description as langDesc,
+                  l.population as langPop,
+                  l.iso_language_code as lIso,
+                  l.country_id as lcId,
+                  p.name as projectName,
+                  p.description as pDesc,
+                  p.goal_amount as goal,
+                  p.funded_amount as funded,
+                  s.title as storyTitle,
+                  s.content as storyCont,
+                  s.hook as storyHook,
+                  f.question as faqQ,
+                  f.answer as faqA,
+                  c.name as countryName,
+                  c.population as cPop,
+                  c.lat as lat,
+                  c.lng as lng
+              FROM
+                 languages as l,
+                 projects as p,
+                 stories as s,
+                 stories_related_projects as srp,
+                 faqs as f,
+                 faqs_related_projects as frp,
+                 countries as c
+              WHERE
+                l.id = p.language_id AND
+                s.id = srp.story_id AND
+                p.id = srp.project_id AND
+                f.id = frp.faq_id AND
+                p.id = frp.project_id AND
+                p.country_id = c.id AND
+                l.name = 'Kivira';`;
   let query = db.query(sql, (err, results) => {
     if(err) throw err;
     console.log(results);
-    console.log('Country Fetched...');
-    res.render('home', {result: results});
+    // console.log('Country Fetched...');
+    // res.render('home', {result: results});
+    res.send(results);
   });
 });
 
