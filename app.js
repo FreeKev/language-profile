@@ -32,68 +32,65 @@ app.use(ejsLayouts);
 // }));
 
 app.get('/', (req, res) => {
-  // let sql = 'SELECT * FROM countries WHERE id = 5';
-  // SELECT * FROM countries, faqs, languages, projects, stories
   let sql = `Select
-                  l.name as languageName,
-                  l.description as langDesc,
-                  l.population as langPop,
-                  l.iso_language_code as lIso,
-                  l.country_id as lcId,
-                  p.name as projectName,
-                  p.description as pDesc,
-                  p.goal_amount as goal,
-                  p.funded_amount as funded,
-                  s.title as storyTitle,
-                  s.content as storyCont,
-                  s.hook as storyHook,
-                  f.question as faqQ,
-                  f.answer as faqA,
-                  c.name as countryName,
-                  c.population as cPop,
-                  c.lat as lat,
-                  c.lng as lng
+                l.name as languageName,
+                l.description as langDesc,
+                l.population as langPop,
+                l.iso_language_code as lIso,
+                l.country_id as lcId,
+                p.name as projectName,
+                p.description as pDesc,
+                p.goal_amount as goal,
+                p.funded_amount as funded,
+                f.question as faqQ,
+                f.answer as faqA,
+                c.name as countryName,
+                c.population as cPop,
+                c.lat as lat,
+                c.lng as lng
               FROM
-                 languages as l,
-                 projects as p,
-                 stories as s,
-                 stories_related_projects as srp,
-                 faqs as f,
-                 faqs_related_projects as frp,
-                 countries as c
+                languages as l,
+                projects as p,
+                faqs as f,
+                faqs_related_projects as frp,
+                countries as c
               WHERE
                 l.id = p.language_id AND
-                s.id = srp.story_id AND
-                p.id = srp.project_id AND
                 f.id = frp.faq_id AND
                 p.id = frp.project_id AND
                 p.country_id = c.id AND
-                l.name = 'Kivira';`;
+                l.name = 'ARUAMU';`;
   let query = db.query(sql, (err, results) => {
     if(err) throw err;
-    console.log(results);
+    // console.log(results);
     // console.log('Country Fetched...');
-    // res.render('home', {result: results});
-    res.send(results);
+    res.render('home', {result: results});
+    // res.send(results);
   });
 });
 
 app.get('/createpoststable', (req, res) => {
   let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
   db.query(sql, (err, result) => {
-    if(err) console.log(err);
-    console.log(result);
+    if(err) throw err;
+    // console.log(result);
     res.send('Posts talbe created');
   });
 });
 
-app.get('/addpost1', (req, res) => {
-  let post = {title: 'Post 1', body:'This is post UNO'};
-  let sql = 'INSERT INTO posts SET ?';
+// req.body is { email: [ 'uniqueid?', 'well@wells.com' ],
+//   fname: 'Well ',
+//   lname: 'wellthen' }
+
+app.post('/signup', (req, res) => {
+  console.log('req.body is', req.body);
+  console.log(req.body.email[1]);
+  let post = {first_name: req.body.fname, last_name: req.body.lname, full_name: req.body.fname + ' ' + req.body.lname, email: req.body.email[1] };
+  let sql = 'INSERT INTO email_signups SET ?';
   let query = db.query(sql, post, (err, result) => {
     if(err) throw err;
     console.log(result);
-    res.send('Post 1 Added...');
+    res.send('Signup info Added...');
   });
 });
 
