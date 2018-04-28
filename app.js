@@ -1,6 +1,9 @@
+require('dotenv').config();
+const bodyParser = require('body-parser');
 const express = require('express');
+const ejsLayouts = require('express-ejs-layouts');
 const mysql = require('mysql');
-
+// const session = require('express-session');
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -17,10 +20,21 @@ db.connect((err) => {
 });
 
 const app = express();
+app.use(express.static(__dirname + '/public'));
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(ejsLayouts);
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 app.get('/', (req, res) => {
-  res.send('Up and running...');
-})
+  res.render('home');
+  // res.send('testing');
+});
 
 app.get('/createpoststable', (req, res) => {
   let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
