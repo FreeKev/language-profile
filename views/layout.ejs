@@ -14,51 +14,8 @@
     <link rel="stylesheet" href="/assets/joe/css/mbr-additional.css" type="text/css">
   </head>
   <body>
-    <section class="menu cid-qQo9KLgt5C" once="menu" id="menu1-e">
 
-      <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <div class="hamburger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </div>
-          </button>
-          <div class="menu-logo">
-              <div class="navbar-brand">
-                  <span class="navbar-logo">
-                      <a href="https://joe.com">
-                           <img src="assets/images/logo2.png" alt="joe" style="height: 3.8rem;">
-                      </a>
-                  </span>
-                  <span class="navbar-caption-wrap">
-                      <a class="navbar-caption text-white display-4" href="https://joe.com">
-                          Wycliffe for <%= result[0].languageName %>
-                      </a>
-                  </span>
-              </div>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                      <a class="nav-link link text-white display-4" href="https://joe.com">
-                          <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-                          Shopping Cart
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link link text-white display-4" href="https://joe.com">
-                          <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                          About Us
-                      </a>
-                  </li></ul>
-              <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="https://joe.com">
-                      <span class="mbri-save mbr-iconfont mbr-iconfont-btn "></span>
-                      Try It Now!
-                  </a></div>
-          </div>
-      </nav>
-  </section>
+  <% include partials/navbar %>
 
   <section class="engine"><a href="https://joe.me/d">site master</a></section><section class="carousel slide cid-qQrwMpwpZG" data-interval="false" id="slider1-y">
 
@@ -212,7 +169,10 @@
           </h2>
           <h3 class="mbr-section-subtitle pb-5 mbr-fonts-style display-5">
               We need your support to reach the world!
+              <br />
+          <% include partials/modality %>    
           </h3>
+          <br />
           <div class="progress_elements">
               <div class="progress1 pb-5">
                   <div class="title-wrap">
@@ -288,7 +248,7 @@
 
       <div class="container">
           <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">
-              Lorem ipsum dolor sit amet
+              Stories and Related Media
           </h2>
 
           <div class="media-container-row container">
@@ -311,7 +271,7 @@
                       Lorem ipsum dolor sit amet
                   </h4>
                   <p class="mbr-text mbr-fonts-style display-7">
-                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
               </div>
               <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4">
@@ -348,14 +308,14 @@
                               <div class="card-header" role="tab" id="headingOne">
                                   <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-core="" href="#collapse1_3" aria-expanded="false" aria-controls="collapse1">
                                       <h4 class="mbr-fonts-style display-5">
-                                          <span class="sign mbr-iconfont mbri-arrow-down inactive"></span> What is joe?
+                                          <span class="sign mbr-iconfont mbri-arrow-down inactive"></span> <%= result[0].faqQ %>
                                       </h4>
                                   </a>
                               </div>
                               <div id="collapse1_3" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#bootstrap-accordion_3">
                                   <div class="panel-body p-4">
                                       <p class="mbr-fonts-style panel-text display-7">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <%= result[0].faqA %></p>
                                   </div>
                               </div>
                           </div>
@@ -421,123 +381,7 @@
       </div>
   </section>
 
-  <section class="cid-qQok34JdZb" id="social-buttons3-v">
-
-
-
-
-
-      <div class="container">
-          <div class="media-container-row">
-              <div class="col-md-8 align-center">
-                  <h2 class="pb-3 mbr-section-title mbr-fonts-style display-2">
-                      SHARE THIS PAGE!
-                  </h2>
-                  <div>
-                      <div class="mbr-social-likes">
-                          <span class="btn btn-social socicon-bg-facebook facebook mx-2" title="Share link on Facebook">
-                              <i class="socicon socicon-facebook"></i>
-                          </span>
-                          <span class="btn btn-social twitter socicon-bg-twitter mx-2" title="Share link on Twitter">
-                              <i class="socicon socicon-twitter"></i>
-                          </span>
-                          <span class="btn btn-social plusone socicon-bg-googleplus mx-2" title="Share link on Google+">
-                              <i class="socicon socicon-googleplus"></i>
-                          </span>
-                          <span class="btn btn-social vkontakte socicon-bg-vkontakte mx-2" title="Share link on VKontakte">
-                              <i class="socicon socicon-vkontakte"></i>
-                          </span>
-                          <span class="btn btn-social odnoklassniki socicon-bg-odnoklassniki mx-2" title="Share link on Odnoklassniki">
-                              <i class="socicon socicon-odnoklassniki"></i>
-                          </span>
-                          <span class="btn btn-social pinterest socicon-bg-pinterest mx-2" title="Share link on Pinterest">
-                              <i class="socicon socicon-pinterest"></i>
-                          </span>
-                          <span class="btn btn-social mailru socicon-bg-mail mx-2" title="Share link on Mailru">
-                              <i class="socicon socicon-mail"></i>
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section class="cid-qQok5NVbHJ" id="footer5-w">
-
-
-
-
-
-      <div class="container">
-          <div class="media-container-row">
-              <div class="col-md-3">
-                  <div class="media-wrap">
-                      <a href="https://joe.com/">
-                         <img src="assets/images/logo2.png" alt="joe">
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-9">
-                  <p class="mbr-text align-right links mbr-fonts-style display-7">
-                      <a href="#" class="text-black">ABOUT</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="#" class="text-black">TERMS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="#" class="text-black">CAREERS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="#" class="text-black">CONTACT</a>
-                  </p>
-              </div>
-          </div>
-          <div class="footer-lower">
-              <div class="media-container-row">
-                  <div class="col-md-12">
-                      <hr>
-                  </div>
-              </div>
-              <div class="media-container-row mbr-white">
-                  <div class="col-md-6 copyright">
-                      <p class="mbr-text mbr-fonts-style display-7">
-                          © Copyright 2018 - All Rights Reserved
-                      </p>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="social-list align-right">
-                          <div class="soc-item">
-                              <a href="https://twitter.com/joe" target="_blank">
-                                  <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                          <div class="soc-item">
-                              <a href="https://www.facebook.com/pages/joe/1616226671953247" target="_blank">
-                                  <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                          <div class="soc-item">
-                              <a href="https://www.youtube.com/c/joe" target="_blank">
-                                  <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                          <div class="soc-item">
-                              <a href="https://instagram.com/joe" target="_blank">
-                                  <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                          <div class="soc-item">
-                              <a href="https://plus.google.com/u/0/+joe" target="_blank">
-                                  <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                          <div class="soc-item">
-                              <a href="https://www.behance.net/joe" target="_blank">
-                                  <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
+  <% include partials/footer %>
 
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>
