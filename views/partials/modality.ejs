@@ -4,18 +4,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Give to <%= result[0].countryName %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-          <p>Your text ...bla bla... and so on!</p>
-      </div>
-      <div class="modal-footer">
-          <span id="timerUp">This pop-up is running from 99 secs</span>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+          <p>You can change lives for eternity...</p>
+          <button type="button" class="btn btn-primary">$6</button>
+          <button type="button" class="btn btn-primary">$15</button>
+          <button type="button" class="btn btn-primary">$30</button>
+          <button type="button" class="btn btn-primary">$50</button>
+          <button type="button" class="btn btn-primary">$100</button>
+          <button type="button" class="btn btn-primary">$Other</button>
       </div>
     </div>
   </div>
@@ -23,7 +24,7 @@
    <!-- Modal button end-->
         <div class="media-container-row">
             <div class="media-content mb-4">
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModal1button" onclick="startTimer()">DONATE</button>
+               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exModal1button">DONATE</button>
                    </div>
         </div>
     </div>

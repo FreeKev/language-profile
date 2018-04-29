@@ -78,10 +78,6 @@ app.get('/createpoststable', (req, res) => {
   });
 });
 
-// req.body is { email: [ 'uniqueid?', 'well@wells.com' ],
-//   fname: 'Well ',
-//   lname: 'wellthen' }
-
 app.post('/signup', (req, res) => {
   console.log('req.body is', req.body);
   console.log(req.body.email[1]);
@@ -90,8 +86,12 @@ app.post('/signup', (req, res) => {
   let query = db.query(sql, post, (err, result) => {
     if(err) throw err;
     console.log(result);
-    res.send('Signup info Added...');
+    res.render('signup')
   });
+});
+
+app.get('/signup', (req, res) => {
+  res.render('signup')
 });
 
 app.get('/addpost2', (req, res) => {
