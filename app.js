@@ -73,7 +73,6 @@ app.get('/createpoststable', (req, res) => {
   let sql = 'CREATE TABLE posts(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
   db.query(sql, (err, result) => {
     if(err) throw err;
-    // console.log(result);
     res.send('Posts talbe created');
   });
 });
@@ -94,55 +93,35 @@ app.get('/signup', (req, res) => {
   res.render('signup')
 });
 
-app.get('/addpost2', (req, res) => {
-  let post = {title: 'Post 2', body:'This is post DOS'};
-  let sql = 'INSERT INTO posts SET ?';
+app.post('/update-cart', (req, res) => {
+  console.log("GIFTS", req.body.gifts);
+  let cartId = req.body.cartId;
+  let cartContents = { projectName: req.body.projectName, items: req.body.gifts};
+  let post = { info: JSON.stringify(cartContents)}
+  let sql ='';
+  // console.log("CART ID: " + cartId);
+  if (cartId) {
+    // TODO: this is not safe
+    console.log("UPDATING CART");
+    sql = 'UPDATE carts SET ? WHERE carts.id = ' + cartId;
+  }
+  else {
+    sql = 'INSERT INTO carts SET ?';
+  }
+  // console.log('SQL query', sql);
   let query = db.query(sql, post, (err, result) => {
     if(err) throw err;
-    console.log(result);
-    res.send('Post 2 Added...');
+    let insertId = result.insertId;
+    let message = {};
+    if (insertId > 0) {
+      message.cartId = insertId;
+    }
+    res.send(message);
   });
 });
 
-// Select posts
-app.get('/getposts', (req, res) => {
-  let sql = 'SELECT * FROM posts';
-  let query = db.query(sql, (err, results) => {
-    if(err) throw err;
-    console.log(results);
-    res.send('Posts Fetched...');
-  });
-});
-
-// Select posts
-app.get('/getpost/:id', (req, res) => {
-  let sql = `SELECT * FROM posts WHERE id = ${req.params.id}`;
-  let query = db.query(sql, (err, result) => {
-    if(err) throw err;
-    console.log(result);
-    res.send('Post Fetched...');
-  });
-});
-
-// Update
-app.get('/updatepost/:id', (req, res) => {
-  let newTitle = 'Updated Title';
-  let sql = `UPDATE posts SET title = '${newTitle}' WHERE id = ${req.params.id}`;
-  let query = db.query(sql, (err, result) => {
-    if(err) throw err;
-    console.log(result);
-    res.send('Post Updated...');
-  });
-});
-
-// Delete Post
-app.get('/deletepost/:id', (req, res) => {
-  let sql = `DELETE FROM posts WHERE id = ${req.params.id}`;
-  let query = db.query(sql, (err, result) => {
-    if(err) throw err;
-    console.log(result);
-    res.send('Post Deleted...');
-  });
+app.get('/mycart', (req, res) => {
+  res.render('donate')
 });
 
 app.listen('3000', () => {
