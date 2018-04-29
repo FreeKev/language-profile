@@ -10,7 +10,18 @@ up CTAs.
 * JQuery
 * MySQL
 * Node.js, Express
+* EJS
 
 ## Approach Taken
 * Wireframing / Design
 ![Wireframing](https://freekev.github.io/Cloud/assets/wyc/wireframe.jpg)
+
+[Link-to-Desktop-video](https://youtu.be/jiTlZ5cFFBA)
+
+## Still More to come!
+* Shopping Cart
+  - Needs to notify user of amount added to cart with subtle CSS
+  - Needs unique hash session Id
+  - Remove gifts
+* Youtube Video Mute/Unmute Toggle
+* Google Maps long/lat marker on specific map locale
